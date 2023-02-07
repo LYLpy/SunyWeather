@@ -1,41 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="?android:windowBackground">
+    android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/bg_img"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/bg_img"
-        tools:ignore="MissingConstraints" />
+        android:id="@+id/bgImageView" 
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/bg_img"/>
 
     <FrameLayout
-        android:background="@color/design_fab_shadow_mid_color"
-        android:id="@+id/actionBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        tools:ignore="MissingConstraints">
+        android:layout_height="66dp"
+        android:background="@color/cardview_shadow_start_color" >
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_gravity="center_vertical"
+            android:id="@+id/actionBarLayout"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp" />
-    </FrameLayout>
+            android:paddingEnd="10dp"
+            android:background="@color/white"
+            android:hint="输入地址"
+            android:layout_gravity="center_vertical">
 
+        </EditText>
+
+    </FrameLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recyclerView"
-        app:layout_constraintBottom_toBottomOf="@id/actionBarLayout"
-        android:visibility="gone"/>
+        android:layout_below="@id/actionBarLayout"
+        tools:ignore="NotSibling">
 
+    </androidx.recyclerview.widget.RecyclerView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

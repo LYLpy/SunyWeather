@@ -5,21 +5,20 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.example.sunyweather.logic.Repository
 import com.example.sunyweather.logic.model.Place
-import retrofit2.http.Query
 
-class PlaceViewModel : ViewModel() {
+/*
+* 定义ViewModel层
+* */
+class PlaceViewModel:ViewModel() {
     private val searchLiveData = MutableLiveData<String>()
+
     val placeList = ArrayList<Place>()
-
-
-    val placeData = Transformations.switchMap(searchLiveData){query->
-        Repository.searchPlaces(query)
-
-
-    }
-    fun searchPlace(query: String){
-        searchLiveData.value=query
+    //使用Transformations.switchMap()观察传入的对象
+    val placeLiveData = Transformations.switchMap(searchLiveData){query->
+        Repository.searchPlase(query)//接收数据
     }
 
-
+    fun searchPlaces(query:String){
+        searchLiveData.value= query
+    }
 }
